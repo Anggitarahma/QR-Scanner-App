@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.AutoFocusMode
@@ -34,10 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         //deklarasi function bagi komponen yang berada pada activity main
         val scannerView = findViewById<CodeScannerView>(R.id.scanner_view)
-        val buttonCopy = findViewById<Button>(R.id.btnCopy)
         val kodeqr = findViewById<TextView>(R.id.textQR)
-        val buttonShare = findViewById<Button>(R.id.btnShare)
-        val buttonSave = findViewById<Button>(R.id.btnSave)
+        val CardCopy = findViewById<CardView>(R.id.cardCopy)
+        val CardSave = findViewById<CardView>(R.id.cardSave)
+        val CardShare = findViewById<CardView>(R.id.cardShare)
 
         //mengeksekusi function getPermission
         getPermission()
@@ -67,8 +68,8 @@ class MainActivity : AppCompatActivity() {
             codeScanner.startPreview()
         }
 
-        //inisialisasi function buttonCopy saat tombol ditekan
-        buttonCopy.setOnClickListener {
+        //inisialisasi function CardCopy saat ditekan
+        CardCopy.setOnClickListener {
             val clipboard : ClipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clip : ClipData = ClipData.newPlainText("simple text", kodeqr.text.toString())
             clipboard.setPrimaryClip(clip)
@@ -77,8 +78,8 @@ class MainActivity : AppCompatActivity() {
             //menampilkan teks bahwa teks hasil scan berhasil di copy ke clipboard
         }
 
-        //inisialisasi function buttonShare saat tombol ditekan
-        buttonShare.setOnClickListener{
+        //inisialisasi function CardShare saat ditekan
+        CardShare.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
                 putExtra(Intent.EXTRA_TEXT, kodeqr.text.toString())
@@ -88,8 +89,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(shareIntent) //memulai aktifitas shareIntent
         }
 
-        //inisialisasi function buttonSave saat tombol ditekan
-        buttonSave.setOnClickListener {
+        //inisialisasi function CardSave saat ditekan
+        CardSave.setOnClickListener {
             val intentBiasa = Intent(this@MainActivity, SaveActivity::class.java)
             startActivity(intentBiasa)
             //deklarasi parameter intentBiasa untuk membuka activity SaveActivity
