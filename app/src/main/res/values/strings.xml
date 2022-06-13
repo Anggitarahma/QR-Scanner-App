@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">QR Scanner</string>
+    <string name="copy">Copy</string>
+    <string name="share">Share</string>
+    <string name="save">Save</string>
+    <string name="textqr">textQR</string>
+    <string name="save_file_to_internal_storage">Save File to Internal Storage</string>
+    <string name="file_name">File Name</string>
+</resources>
